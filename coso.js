@@ -15,7 +15,10 @@ window.onload = async () => {
 
     chainId = await web3.eth.getChainId()
 
-    if (chainId!= 97) alert("Conecta con BSC Testnet amigo");
+    if (chainId != 97) {
+      alert("Conecta con BSC Testnet amigo");
+      location.reload();
+    }
 
 
     coso();
@@ -38,13 +41,13 @@ const coso = async () => {
   } catch (err) { console.error(err) }
 
 
-  if (chainId == 97) { 
-    
+  if (chainId == 97) {
+
 
     const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
-    let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();   
-    
-    let pendingHumano = web3.utils.fromWei(pendingReward); 
+    let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
+
+    let pendingHumano = web3.utils.fromWei(pendingReward);
 
     document.getElementById("pendRew").innerText = pendingHumano;
 
@@ -79,7 +82,7 @@ const mint = async () => {
   let cuenta = await web3.eth.getAccounts();
 
   const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0x53D10d081ebB9dAe97095B6c7eee28085c545471");
-  await tokenContract.methods.mint(cuenta[0], BigInt(1e21)).send({ from: cuenta[0] });
+  await tokenContract.methods.mint(cuenta[0], BigInt(1e21)).mint({ from: cuenta[0] });
 
 }
 
