@@ -15,7 +15,7 @@ window.onload = async () => {
 
     chainId = await web3.eth.getChainId()
 
-    if (chainId != 97) {
+    if (chainId!= 97) {
       alert("Conecta con BSC Testnet amigo");
       return;
     }
@@ -41,28 +41,26 @@ const coso = async () => {
   } catch (err) { console.error(err) }
 
 
-  if (chainId == 97) {
+  if (chainId == 97) { 
+    
+
+    //const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
+    //let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();   
+    
+    //let pendingHumano = web3.utils.fromWei(pendingReward); 
+
+    //document.getElementById("depo1").innerText = pendingHumano;
 
 
-    const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
-    let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
-
-    let pendingHumano = web3.utils.fromWei(pendingReward);
-
-    document.getElementById("pendRew").innerText = pendingHumano;
-
-
-    let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
-    let horaHarvest = lastHarvest * 1000;
-    horaHarvest = new Date(horaHarvest);
+   // let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
+   // let horaHarvest = lastHarvest * 1000;
+    //horaHarvest = new Date(horaHarvest);
     //document.getElementById("lastHarvest").innerText = horaHarvest;
 
-    let hora = Date.now()
-    let tiempo = hora - lastHarvest * 1000
-    tiempo = (((tiempo / 3600000)).toFixed(1))
-    document.getElementById("horas").innerText = tiempo + " horas";
+    
+    //document.getElementById("horas").innerText = tiempo + " horas";
 
-    document.getElementById("BSC").style.display = "inline-block";
+    //document.getElementById("BSC").style.display = "inline-block";
 
   }
 
@@ -81,8 +79,8 @@ const mint = async () => {
 
   let cuenta = await web3.eth.getAccounts();
 
-  const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0x53D10d081ebB9dAe97095B6c7eee28085c545471");
-  await tokenContract.methods.mint(cuenta[0], BigInt(1e21)).send({ from: cuenta[0] });
+  const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
+  await tokenContract.methods.mint(cuenta[0], BigInt(1e18)).send({ from: cuenta[0] });
 
 }
 
