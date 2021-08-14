@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+	<title></title>
+</head>
+
+<body>
+	<h1></h1>
+	<h4>Cuenta conectada </h4>
+	<p id="add">No conectada</p>
+	<h4>Red</h4>
+	<p id="red">No conectada</p>
+	<h4>Balance</h4>
+	<p id="bal"></p>
+	<div class="vaults">
+		<div class="vault" style = "display: none;" id="BSC">
+			<h4>Pending Reward BUSD/UST (BSC)</h4>
+			<p id="pendRew"></p>
+			<h4>Last Compound</h4>
+			<p id="lastHarvest"></p>
+			<p id="horas"></p>
+		</div>
+	</div>
+	<button id="button1">Pedir</button>
+	<script src="https://unpkg.com/@metamask/detect-provider/dist/detect-provider.min.js"></script>
+	<script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+	<script src="./abis/farmAbi.js"></script>
+	<script src="./abis/tokenAbi.js"></script>
+	<script src="coso.js" type="module"></script>
+
+</body>
+
+</html>
