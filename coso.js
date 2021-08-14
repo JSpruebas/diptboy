@@ -17,7 +17,7 @@ window.onload = async () => {
 
     if (chainId != 97) {
       alert("Conecta con BSC Testnet amigo");
-      location.reload();
+      return;
     }
 
 
