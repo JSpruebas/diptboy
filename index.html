@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+</head>
+
+<body>
+    <h1></h1>
+    <h4>Cuenta conectada </h4>
+    <p id="add">No conectada</p>
+    <h4>Balance</h4>
+    <p id="bal"></p>
+    <div class="pools">
+
+        <div class="pool" id="stake1">
+            <h3>Pool 1</h3>
+            <h4>Depositado</h4>
+            <h4 id="depo1"></h4>
+            <h4>Harvest pendiente</h4>
+            <h4 id="harvest1"></h4>
+        </div>
+
+        <div class="pool" id="stake2">
+            <h3>Pool 2</h3>
+            <h4>Depositado</h4>
+            <h4 id="depo2">12231</h4>
+            <h4>Harvest pendiente</h4>
+            <h4 id="harvest2">123214</h4>
+        </div>
+
+    </div>
+    <div class="pools">
+
+        <button id = "botonAp1" class="botones">Aprobar1</button>
+        <button id = "botonAp2" class="botones">Depositar1</button>
+        <button id = "botHarvest1" class="botones">Harves1</button>
+        <button id = "botonDep1" class="botones">Aprobar2</button>
+        <button id = "botonDep2" class="botones">Depositar2</button>
+        <button id = "botHarvest2" class="botones">Harvest2</button>
+
+    </div>
+    <button id="button1" class = "botones">Tokens gratis</button>
+    <script src="https://unpkg.com/@metamask/detect-provider/dist/detect-provider.min.js"></script>
+    <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+    <script src="./abis/farmAbi.js"></script>
+    <script src="./abis/tokenAbi.js"></script>
+    <script src="coso.js" type="module"></script>
+
+</body>
+
+</html>
