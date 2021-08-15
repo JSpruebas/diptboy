@@ -14,7 +14,7 @@ window.onload = async () => {
 
     chainId = await web3.eth.getChainId()
 
-    if (chainId!= 97) {
+    if (chainId != 97) {
       document.getElementById("divPools").style.display = "none";
       document.getElementById("button1").style.display = "none";
       alert("Conecta con BSC Testnet amigo");
@@ -41,29 +41,31 @@ const coso = async () => {
     document.getElementById("bal").innerText = tuBalance;
   } catch (err) { console.error(err) }
 
+  const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
+  const farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
 
-  if (chainId == 97) { 
-    
-
-    //const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
-    //let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();   
-    
-    //let pendingHumano = web3.utils.fromWei(pendingReward); 
-
-    //document.getElementById("depo1").innerText = pendingHumano;
+  const aprobar1 = document.getElementById("botonAp1").innerText = pendingHumano;
+  const depo1 = document.getElementById("botonDep1").innerText = pendingHumano;
+  const harvest1 = document.getElementById("botHarvest1").innerText = pendingHumano;
 
 
-   // let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
-   // let horaHarvest = lastHarvest * 1000;
-    //horaHarvest = new Date(horaHarvest);
-    //document.getElementById("lastHarvest").innerText = horaHarvest;
+  let pendingReward = await farmContract.methods.pendingD20(0, tuCuenta[0]).call();
 
-    
-    //document.getElementById("horas").innerText = tiempo + " horas";
+  //let pendingHumano = web3.utils.fromWei(pendingReward); 
 
-    //document.getElementById("BSC").style.display = "inline-block";
+  //document.getElementById("depo1").innerText = pendingHumano;
 
-  }
+
+  // let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
+  // let horaHarvest = lastHarvest * 1000;
+  //horaHarvest = new Date(horaHarvest);
+  //document.getElementById("lastHarvest").innerText = horaHarvest;
+
+
+  //document.getElementById("horas").innerText = tiempo + " horas";
+
+  //document.getElementById("BSC").style.display = "inline-block";
+
 
 
 
