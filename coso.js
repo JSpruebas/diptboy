@@ -16,6 +16,7 @@ window.onload = async () => {
 
     if (chainId!= 97) {
       document.getElementById("divPools").style.display = "none";
+      document.getElementById("button1").style.display = "none";
       alert("Conecta con BSC Testnet amigo");
       return;
     }
