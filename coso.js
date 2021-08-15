@@ -31,6 +31,8 @@ window.onload = async () => {
   }
 }
 
+let cuenta = await web3.eth.getAccounts();
+
 const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
 const farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
 
@@ -47,8 +49,6 @@ const coso = async () => {
     tuBalance = web3.utils.fromWei(tuBalance);
     document.getElementById("bal").innerText = tuBalance;
   } catch (err) { console.error(err) }
-
-
 
 
 
@@ -97,9 +97,7 @@ const funcHarvest1 = async () => {
 }
 
 
-const mint = async () => {
-
-  let cuenta = await web3.eth.getAccounts();
+const mint = async () => {  
 
   const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
   await tokenContract.methods.mint(cuenta[0], BigInt(1e18)).send({ from: cuenta[0] });
