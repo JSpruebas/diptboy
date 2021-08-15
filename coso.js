@@ -44,9 +44,9 @@ const coso = async () => {
   const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
   const farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
 
-  const aprobar1 = document.getElementById("botonAp1").innerText = pendingHumano;
-  const depo1 = document.getElementById("botonDep1").innerText = pendingHumano;
-  const harvest1 = document.getElementById("botHarvest1").innerText = pendingHumano;
+  const aprobar1 = document.getElementById("botonAp1");
+  const depo1 = document.getElementById("botonDep1");
+  const harvest1 = document.getElementById("botHarvest1");
 
 
   let pendingReward = await farmContract.methods.pendingD20(0, tuCuenta[0]).call();
