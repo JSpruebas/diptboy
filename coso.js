@@ -84,17 +84,22 @@ let refrescar = setInterval(coso, 3000);
 const funcAprob1 = async () => {
   
   let cuenta = await web3.eth.getAccounts();
-  const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
-  const farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
+  const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");  
   await tokenContract.methods.approve("0xe0979c566153602B24f7f07999cbFbc7D499eE66", BigInt(1e25)).send({ from: cuenta[0] });
 
 }
 
 const funcDepo1 = async () => {
+  let cuenta = await web3.eth.getAccounts();  
+  const farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
+  await farmContract.methods.deposit(0, BigInt(1e18)).send({ from: cuenta[0] });
 
 }
 
 const funcHarvest1 = async () => {
+  let cuenta = await web3.eth.getAccounts();  
+  const farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
+  await farmContract.methods.deposit(0, 0).send({ from: cuenta[0] });
 
 }
 
