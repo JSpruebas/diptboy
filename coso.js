@@ -73,8 +73,8 @@ const coso = async () => {
 
   document.getElementById("button1").onclick = mint;
   aprobar1.onclick = funcAprob1;
-  depo1.onclick = mint;
-  harvest1.onclick = mint;
+  depo1.onclick = funcDepo1;
+  harvest1.onclick = funcHarvest1;
 
 }
 
