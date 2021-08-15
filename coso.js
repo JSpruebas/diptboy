@@ -15,7 +15,7 @@ window.onload = async () => {
     chainId = await web3.eth.getChainId()
 
     if (chainId!= 97) {
-      document.getElementById("pools").style.display = "none";
+      document.getElementById("divPools").style.display = "none";
       alert("Conecta con BSC Testnet amigo");
       return;
     }
