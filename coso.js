@@ -31,6 +31,13 @@ window.onload = async () => {
   }
 }
 
+const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
+const farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
+
+const aprobar1 = document.getElementById("botonAp1");
+const depo1 = document.getElementById("botonDep1");
+const harvest1 = document.getElementById("botHarvest1");
+
 const coso = async () => {
 
   let tuCuenta = await web3.eth.getAccounts();
@@ -41,12 +48,7 @@ const coso = async () => {
     document.getElementById("bal").innerText = tuBalance;
   } catch (err) { console.error(err) }
 
-  const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
-  const farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
 
-  const aprobar1 = document.getElementById("botonAp1");
-  const depo1 = document.getElementById("botonDep1");
-  const harvest1 = document.getElementById("botHarvest1");
 
 
 
