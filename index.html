@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title></title>
 </head>
@@ -22,33 +22,35 @@
     <div class="pools">
 
         <div class="pool" id="stake1">
-            <h3>Pool 1</h3>
+            <h3>Pool 1 (tokens gratis)</h3>
             <h4>Depositado
-            <span id="depo1">12231</span> </h4>
+                <span id="depo1">12231</span>
+            </h4>
             <h4>Harvest pendiente
-            <span id="harvest1">123214</span></h4>
+                <span id="harvest1">123214</span>
+            </h4>
+
+            <button id="botonAp1" class="botones">Aprobar</button>
+            <button id="botonAp2" class="botones">Depositar</button>
+            <button id="botHarvest1" class="botones">Harvest</button>
         </div>
 
         <div class="pool" id="stake2">
-            <h3>Pool 2</h3>
+            <h3>Pool 2 (deshabilitado)</h3>
             <h4>Depositado
-            <span id="depo2">12231</span> </h4>
+                <span id="depo2">12231</span>
+            </h4>
             <h4>Harvest pendiente
-            <span id="harvest2">123214</span></h4>
+                <span id="harvest2">123214</span>
+            </h4>
+            <button id="botonDep1" class="botones">Aprobar</button>
+            <button id="botonDep2" class="botones">Depositar</button>
+            <button id="botHarvest2" class="botones">Harvest</button>
         </div>
 
     </div>
-    <div class="pools">
-
-        <button id="botonAp1" class="botones">Aprobar1</button>
-        <button id="botonAp2" class="botones">Depositar1</button>
-        <button id="botHarvest1" class="botones">Harves1</button>
-        <button id="botonDep1" class="botones">Aprobar2</button>
-        <button id="botonDep2" class="botones">Depositar2</button>
-        <button id="botHarvest2" class="botones">Harvest2</button>
-
-    </div>
-    <button id="button1" class="botones">Tokens gratis</button>
+    <div class = "pools"><button id="button1" class="botones">Tokens gratis</button></div>
+    
     <script src="https://unpkg.com/@metamask/detect-provider/dist/detect-provider.min.js"></script>
     <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
     <script src="./abis/farmAbi.js"></script>
