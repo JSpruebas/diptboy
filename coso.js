@@ -51,9 +51,9 @@ const coso = async () => {
 
   let pendingReward = await farmContract.methods.pendingD20(0, tuCuenta[0]).call();
 
-  //let pendingHumano = web3.utils.fromWei(pendingReward); 
+  let pendingHumano = web3.utils.fromWei(pendingReward); 
 
-  //document.getElementById("depo1").innerText = pendingHumano;
+  document.getElementById("harvest1").innerText = pendingHumano;
 
 
   // let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
