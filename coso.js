@@ -58,15 +58,11 @@ const coso = async () => {
   document.getElementById("harvest1").innerText = pendingHumano;
 
 
-  // let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
-  // let horaHarvest = lastHarvest * 1000;
-  //horaHarvest = new Date(horaHarvest);
-  //document.getElementById("lastHarvest").innerText = horaHarvest;
+  let depositado  = await farmContract.methods.userInfo(0, tuCuenta[0]).call();
 
+  let depositadoHumano = web3.utils.fromWei(depositado[0]);
 
-  //document.getElementById("horas").innerText = tiempo + " horas";
-
-  //document.getElementById("BSC").style.display = "inline-block";
+  document.getElementById("depo1").innerText = depositadoHumano;
 
 
 
