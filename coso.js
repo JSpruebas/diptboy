@@ -17,7 +17,7 @@ window.onload = async () => {
     if (chainId != 97) {
       document.getElementById("divPools").style.display = "none";
       document.getElementById("button1").style.display = "none";
-      alert("Conecta con BSC Testnet amigo");
+      alert("Conecta con BSC Testnet por favor");
       return;
     }
 
@@ -49,9 +49,11 @@ const coso = async () => {
   const harvest1 = document.getElementById("botHarvest1");
 
 
+
+
   let pendingReward = await farmContract.methods.pendingD20(0, tuCuenta[0]).call();
 
-  let pendingHumano = web3.utils.fromWei(pendingReward); 
+  let pendingHumano = web3.utils.fromWei(pendingReward);
 
   document.getElementById("harvest1").innerText = pendingHumano;
 
@@ -70,12 +72,27 @@ const coso = async () => {
 
 
   document.getElementById("button1").onclick = mint;
+  aprobar1.onclick = funcAprob1;
+  depo1.onclick = mint;
+  harvest1.onclick = mint;
 
 }
 
 
 let refrescar = setInterval(coso, 3000);
 
+const funcAprob1 = async () => {
+  await tokenContract.methods.approve(0xe0979c566153602B24f7f07999cbFbc7D499eE66, BigInt(1e25)).send({ from: cuenta[0] });
+
+}
+
+const funcDepo1 = async () => {
+
+}
+
+const funcHarvest1 = async () => {
+
+}
 
 
 const mint = async () => {
