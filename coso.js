@@ -49,14 +49,14 @@ const coso = async () => {
 
 
   let pendingReward = await farmContract.methods.pendingD20(0, tuCuenta[0]).call();
-  let pendingHumano = parseInt(web3.utils.fromWei(pendingReward)).toFixed(1);  
+  let pendingHumano = parseInt(web3.utils.fromWei(pendingReward)).toFixed(3);  
 
   document.getElementById("harvest1").innerText = pendingHumano;
 
 
   let depositado = await farmContract.methods.userInfo(0, tuCuenta[0]).call();
 
-  let depositadoHumano = web3.utils.fromWei(depositado[0]).toFixed(1);
+  let depositadoHumano = parseInt(web3.utils.fromWei(depositado[0])).toFixed(1);
 
   document.getElementById("depo1").innerText = depositadoHumano;
 
