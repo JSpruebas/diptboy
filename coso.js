@@ -70,9 +70,13 @@ const coso = async () => {
   depo1.onclick = funcDepo1;
   harvest1.onclick = funcHarvest1;
 
+  refrescar()
+
 }
 
-
+function refrescar(){
+  setInterval(coso,3000);
+}
 //let refrescar = setInterval(coso, 3000);
 
 const funcAprob1 = async () => {
