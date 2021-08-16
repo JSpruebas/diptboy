@@ -1,6 +1,6 @@
 const web3 = new Web3;
 let chainId;
-const tokenContract;
+let tokenContract;
 
 window.onload = async () => {
   const provider = await detectEthereumProvider({ timeout: 2000 })
