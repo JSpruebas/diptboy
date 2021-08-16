@@ -18,7 +18,11 @@ window.onload = async () => {
       document.getElementById("divPools").style.display = "none";
       document.getElementById("button1").style.display = "none";
       alert("Conecta con BSC Testnet por favor");
-    } else coso();
+      return;
+    }
+
+
+    coso();
 
 
   } else {
