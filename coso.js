@@ -1,4 +1,6 @@
 const web3 = new Web3;
+const farmAdd = "0xe0979c566153602B24f7f07999cbFbc7D499eE66";
+const tokenAdd = "0xDaac95fa5761b808794e5D5b2C402350940c91e8";
 let chainId;
 let tokenContract, farmContract;
 
@@ -19,7 +21,7 @@ window.onload = async () => {
       document.getElementById("divPools").style.display = "none";
       document.getElementById("button1").style.display = "none";
       alert("Conecta con BSC Testnet por favor");
-    } else coso();
+    } else //coso();
 
 
   } else {
@@ -40,8 +42,8 @@ const coso = async () => {
   } catch (err) { console.error(err) }
 
 
-  tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
-  farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
+  tokenContract = await new web3.eth.Contract(window.tokenAbi, tokenAdd);
+  farmContract = await new web3.eth.Contract(window.farmAbi, farmAdd);
 
   const aprobar1 = document.getElementById("botonAp1");
   const depo1 = document.getElementById("botonDep1");
@@ -76,7 +78,7 @@ let refrescar = setInterval(coso, 3000);
 const funcAprob1 = async () => {
 
   let cuenta = await web3.eth.getAccounts();
-  await tokenContract.methods.approve("0xe0979c566153602B24f7f07999cbFbc7D499eE66", BigInt(1e25)).send({ from: cuenta[0] });
+  await tokenContract.methods.approve(farmAdd, BigInt(1e25)).send({ from: cuenta[0] });
 
 }
 
