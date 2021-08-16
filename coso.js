@@ -49,8 +49,7 @@ const coso = async () => {
 
 
   let pendingReward = await farmContract.methods.pendingD20(0, tuCuenta[0]).call();
-  let pendingHumano = web3.utils.fromWei(pendingReward);
-  pendingHumano = pendingHumano.toFixed(1);
+  let pendingHumano = BigInt(web3.utils.fromWei(pendingReward)).toFixed(1);  
 
   document.getElementById("harvest1").innerText = pendingHumano;
 
