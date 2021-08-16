@@ -30,3 +30,7 @@ body {
     display: inline-block;
     background-color: rgb(34, 96, 121) ;  
 }
+
+#button1 {
+    margin-top: 20px;
+  }

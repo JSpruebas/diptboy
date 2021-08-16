@@ -77,7 +77,6 @@ const coso = async () => {
 function refrescar(){
   setInterval(coso,3000);
 }
-//let refrescar = setInterval(coso, 3000);
 
 const funcAprob1 = async () => {
 
