@@ -1,6 +1,6 @@
 const web3 = new Web3;
 let chainId;
-let tokenContract;
+let tokenContract, farmContract;
 
 window.onload = async () => {
   const provider = await detectEthereumProvider({ timeout: 2000 })
@@ -41,7 +41,7 @@ const coso = async () => {
 
 
   tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
-  const farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
+  farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
 
   const aprobar1 = document.getElementById("botonAp1");
   const depo1 = document.getElementById("botonDep1");
@@ -49,15 +49,14 @@ const coso = async () => {
 
 
   let pendingReward = await farmContract.methods.pendingD20(0, tuCuenta[0]).call();
-
   let pendingHumano = web3.utils.fromWei(pendingReward);
 
-  document.getElementById("harvest1").innerText = pendingHumano;
+  document.getElementById("harvest1").innerText = pendingHumano.toFixed(1);
 
 
   let depositado = await farmContract.methods.userInfo(0, tuCuenta[0]).call();
 
-  let depositadoHumano = web3.utils.fromWei(depositado[0]);
+  let depositadoHumano = web3.utils.fromWei(depositado[0]).toFixed(1);
 
   document.getElementById("depo1").innerText = depositadoHumano;
 
@@ -76,28 +75,26 @@ let refrescar = setInterval(coso, 3000);
 
 const funcAprob1 = async () => {
 
-  let cuenta = await web3.eth.getAccounts();  
+  let cuenta = await web3.eth.getAccounts();
   await tokenContract.methods.approve("0xe0979c566153602B24f7f07999cbFbc7D499eE66", BigInt(1e25)).send({ from: cuenta[0] });
 
 }
 
 const funcDepo1 = async () => {
-  let cuenta = await web3.eth.getAccounts();
-  const farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
+  let cuenta = await web3.eth.getAccounts();  
   await farmContract.methods.deposit(0, BigInt(1e18)).send({ from: cuenta[0] });
 
 }
 
 const funcHarvest1 = async () => {
-  let cuenta = await web3.eth.getAccounts();
-  const farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
+  let cuenta = await web3.eth.getAccounts();  
   await farmContract.methods.deposit(0, 0).send({ from: cuenta[0] });
 
 }
 
 
 const mint = async () => {
-  let cuenta = await web3.eth.getAccounts();  
+  let cuenta = await web3.eth.getAccounts();
   await tokenContract.methods.mint(cuenta[0], BigInt(1e18)).send({ from: cuenta[0] });
 
 }
