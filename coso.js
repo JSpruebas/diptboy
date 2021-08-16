@@ -31,7 +31,7 @@ window.onload = async () => {
 }
 
 
-const coso = async () => {
+async function coso () {
 
   let tuCuenta = await web3.eth.getAccounts();
   document.getElementById("add").innerText = tuCuenta;
