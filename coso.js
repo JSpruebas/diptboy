@@ -1,5 +1,6 @@
 const web3 = new Web3;
 let chainId;
+const tokenContract;
 
 window.onload = async () => {
   const provider = await detectEthereumProvider({ timeout: 2000 })
@@ -39,7 +40,7 @@ const coso = async () => {
   } catch (err) { console.error(err) }
 
 
-  const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
+  tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
   const farmContract = await new web3.eth.Contract(window.farmAbi, "0xe0979c566153602B24f7f07999cbFbc7D499eE66");
 
   const aprobar1 = document.getElementById("botonAp1");
@@ -75,8 +76,7 @@ let refrescar = setInterval(coso, 3000);
 
 const funcAprob1 = async () => {
 
-  let cuenta = await web3.eth.getAccounts();
-  const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
+  let cuenta = await web3.eth.getAccounts();  
   await tokenContract.methods.approve("0xe0979c566153602B24f7f07999cbFbc7D499eE66", BigInt(1e25)).send({ from: cuenta[0] });
 
 }
@@ -97,8 +97,7 @@ const funcHarvest1 = async () => {
 
 
 const mint = async () => {
-  let cuenta = await web3.eth.getAccounts();
-  const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0xDaac95fa5761b808794e5D5b2C402350940c91e8");
+  let cuenta = await web3.eth.getAccounts();  
   await tokenContract.methods.mint(cuenta[0], BigInt(1e18)).send({ from: cuenta[0] });
 
 }
