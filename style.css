@@ -68,3 +68,15 @@ body {
     }
     
 }
+
+.china{
+    display: flex;     
+    flex-wrap: wrap;
+    justify-content: center;  
+ 
+}
+
+.video {   
+    width: 50%;    
+    height: 50%;
+}
