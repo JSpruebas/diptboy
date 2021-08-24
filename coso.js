@@ -71,7 +71,7 @@ const coso = async () => {
   let depositadoHumano = Number(web3.utils.fromWei(depositado[0])).toFixed(1);
   document.getElementById("depo1").textContent = depositadoHumano;
 
-  refrescar();
+  //refrescar();
 
 }
 
