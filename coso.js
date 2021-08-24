@@ -21,7 +21,10 @@ window.onload = async () => {
       document.getElementById("divPools").style.display = "none";
       document.getElementById("button1").style.display = "none";
       alert("Conecta con BSC Testnet por favor");
-    } else coso();
+    } else {
+      coso();
+      refrescar();
+    }
 
 
   } else {
@@ -29,6 +32,8 @@ window.onload = async () => {
     alert("Metamask no detectado, use navegador dapp")
   }
 }
+
+
 
 
 const coso = async () => {
@@ -42,67 +47,60 @@ const coso = async () => {
   tokenContract = await new web3.eth.Contract(window.tokenAbi, tokenAdd);
   farmContract = await new web3.eth.Contract(window.farmAbi, farmAdd);
 
+
+  let allowance = await tokenContract.methods.allowance(tuCuenta[0], farmAdd).call()
+  if (allowance > 1e24) {
+    aprobar1.textContent = "DEPOSITAR"
+  }
+
+
+    let pendingReward = await farmContract.methods.pendingD20(0, tuCuenta[0]).call();
+    let pendingHumano = Number(web3.utils.fromWei(pendingReward)).toFixed(3);
+    document.getElementById("harvest1").textContent = pendingHumano;
+
+
+    let depositado = await farmContract.methods.userInfo(0, tuCuenta[0]).call();
+    let depositadoHumano = Number(web3.utils.fromWei(depositado[0])).toFixed(1);
+    document.getElementById("depo1").textContent = depositadoHumano;
+
+  }
+  
+
+  function refrescar() { setInterval(coso, 3000) };
+
+
+  const funcAprob1 = async () => {
+    let cuenta = await web3.eth.getAccounts();
+    await tokenContract.methods.approve(farmAdd, BigInt(1e25)).send({ from: cuenta[0] });
+  }
+
+  const funcDepo1 = async () => {
+    let cuenta = await web3.eth.getAccounts();
+    await farmContract.methods.deposit(0, BigInt(1e18)).send({ from: cuenta[0] });
+  }
+
+  const funcHarvest1 = async () => {
+    let cuenta = await web3.eth.getAccounts();
+    await farmContract.methods.deposit(0, 0).send({ from: cuenta[0] });
+  }
+
+
+  async function mint() {
+    let cuenta = await web3.eth.getAccounts();
+    await tokenContract.methods.mint(cuenta[0], BigInt(1e18)).send({ from: cuenta[0] });
+
+  }
+
+
+
   const aprobar1 = document.getElementById("botonAp1");
   const harvest1 = document.getElementById("botHarvest1");
   const mint1 = document.getElementById("button1");
 
-  const chekAllowance = async () => {
-    let allowance = await tokenContract.methods.allowance(tuCuenta[0], farmAdd).call()
-    if (allowance > 1e24) {
-      aprobar1.textContent = "DEPOSITAR"
-      aprobar1.addEventListener("click", funcDepo1);
-    } else {
-      aprobar1.addEventListener("click", funcAprob1);
-    }
-  }
-
-  chekAllowance();
 
   mint1.addEventListener("click", mint);
   harvest1.addEventListener("click", funcHarvest1);
-
-
-  let pendingReward = await farmContract.methods.pendingD20(0, tuCuenta[0]).call();
-  let pendingHumano = Number(web3.utils.fromWei(pendingReward)).toFixed(3);
-  document.getElementById("harvest1").textContent = pendingHumano;
-
-
-  let depositado = await farmContract.methods.userInfo(0, tuCuenta[0]).call();
-  let depositadoHumano = Number(web3.utils.fromWei(depositado[0])).toFixed(1);
-  document.getElementById("depo1").textContent = depositadoHumano;
-
-  refrescar();
-
-}
-
-function refrescar() { setInterval(coso, 30000) };
-
-
-const funcAprob1 = async () => {
-  let cuenta = await web3.eth.getAccounts();
-  await tokenContract.methods.approve(farmAdd, BigInt(1e25)).send({ from: cuenta[0] });
-}
-
-const funcDepo1 = async () => {
-  let cuenta = await web3.eth.getAccounts();
-  await farmContract.methods.deposit(0, BigInt(1e18)).send({ from: cuenta[0] });
-}
-
-const funcHarvest1 = async () => {
-  let cuenta = await web3.eth.getAccounts();
-  await farmContract.methods.deposit(0, 0).send({ from: cuenta[0] });
-}
-
-
-async function mint() {
-  let cuenta = await web3.eth.getAccounts();
-  await tokenContract.methods.mint(cuenta[0], BigInt(1e18)).send({ from: cuenta[0] });
-
-}
-
-
-
-
+  aprobar1.addEventListener("click", funcDepo1);
 
 
 
