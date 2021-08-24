@@ -53,8 +53,10 @@ const coso = async () => {
   if (allowance > 1e24) {
     aprobar1.textContent = "DEPOSITAR"
     aprobar1.addEventListener("click", funcDepo1);
+    aprobar1.removeEventListener("click", funcAprob1);
   } else {
     aprobar1.addEventListener("click", funcAprob1);
+    aprobar1.removeEventListener("click", funcDepo1);
   } 
 
 
