@@ -9,8 +9,6 @@ const aprobar1 = document.getElementById("botonAp1");
 const harvest1 = document.getElementById("botHarvest1");
 const mint1 = document.getElementById("button1");
 
-mint1.addEventListener("click", mint);
-  harvest1.addEventListener("click", funcHarvest1);
 
 window.onload = async () => {
   const provider = await detectEthereumProvider({ timeout: 2000 })
@@ -97,6 +95,10 @@ async function mint() {
   await tokenContract.methods.mint(cuenta[0], BigInt(1e18)).send({ from: cuenta[0] });
 
 }
+
+
+mint1.addEventListener("click", mint);
+  harvest1.addEventListener("click", funcHarvest1);
 
 
 
